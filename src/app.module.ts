@@ -8,24 +8,24 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [config], // Load the configuration from the config file
+      load: [config],
     }),
     SequelizeModule.forRootAsync({
-      imports: [ConfigModule], // Import ConfigModule to use ConfigService
-      inject: [ConfigService], // Inject ConfigService to fetch configuration
+      imports: [ConfigModule], 
+      inject: [ConfigService], 
       useFactory: async (configService: ConfigService) => ({
-        dialect: 'postgres', // Specify the dialect for PostgreSQL
+        dialect: 'postgres',
         host: configService.get('config.database.host'),
-        port: configService.get<string>('config.database.port'),
+        port: parseInt(configService.get('config.database.port'), 10), 
         username: configService.get('config.database.username'),
         password: configService.get('config.database.password'),
         database: configService.get('config.database.database'),
-        autoLoadModels: true, // Automatically load models from the defined path
-        synchronize: true, // Automatically synchronize models with the database (for development only)
+        autoLoadModels: true, 
+        synchronize: true, 
       }),
     }),
-    UserModule,
     AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}

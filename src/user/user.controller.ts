@@ -13,3 +13,4 @@ export class UserController {
     return this.userService.createUser(fullName, email, password);
   }
 }
+

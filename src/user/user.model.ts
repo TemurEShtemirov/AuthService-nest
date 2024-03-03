@@ -2,12 +2,12 @@ import { Table, Column, Model } from 'sequelize-typescript';
 
 @Table
 export class User extends Model<User> {
-  @Column({ unique: true })
+  @Column({ unique: true, allowNull: false })
   email: string;
 
-  @Column
+  @Column({ allowNull: false })
   fullName: string;
 
-  @Column
+  @Column({ allowNull: false })
   password: string;
 }
