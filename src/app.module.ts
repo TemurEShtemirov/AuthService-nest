@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
       useFactory: async (configService: ConfigService) => ({
         dialect: 'postgres', // Specify the dialect for PostgreSQL
         host: configService.get('config.database.host'),
-        port: configService.get<number>('config.database.port'),
+        port: configService.get<string>('config.database.port'),
         username: configService.get('config.database.username'),
         password: configService.get('config.database.password'),
         database: configService.get('config.database.database'),
