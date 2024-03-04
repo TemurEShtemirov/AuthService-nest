@@ -59,7 +59,6 @@ import {
   ClientProxyFactory,
   Transport,
 } from '@nestjs/microservices';
-import { AuthService } from './auth.service';
 import { RegisterDto } from './register.dto';
 import { LoginDto } from './login.dto';
 

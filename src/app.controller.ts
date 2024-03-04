@@ -44,11 +44,11 @@ export class AppController {
 
   @Post('auth/login')
   async login(@Body() loginDto: LoginDto) {
-    return this.authServiceClient.send('login', loginDto)  // .toPromise()
+    return this.authServiceClient.send('login', loginDto);
   }
 
   @Post('auth/register')
   async register(@Body() registerDto: RegisterDto) {
-    return this.authServiceClient.send('register', registerDto)  // .toPromise()
+    return this.authServiceClient.send('register', registerDto);
   }
 }

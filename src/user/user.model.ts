@@ -10,4 +10,7 @@ export class User extends Model<User> {
 
   @Column({ allowNull: false })
   password: string;
+
+  @Column({ type: 'VIRTUAL' })
+  ctx: any;
 }

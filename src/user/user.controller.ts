@@ -38,6 +38,6 @@ export class UserController {
 
   @Post('register')
   async register(@Body() registerDto: UserRegisterDto) {
-    return this.userServiceClient.send('register', registerDto)  //.toPromise();
+    return this.userServiceClient.send('register', registerDto) 
   }
 }
