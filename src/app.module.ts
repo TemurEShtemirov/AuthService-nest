@@ -35,7 +35,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from './config';
 import { UserModule } from './user/user.module';
-import { AuthModule } from './auth/auth.module'; // AuthModule ni import qilishni o'chiramiz
+// import { AuthModule } from './auth/auth.module'; // AuthModule ni import qilishni o'chiramiz
 
 @Module({
   imports: [
@@ -56,7 +56,7 @@ import { AuthModule } from './auth/auth.module'; // AuthModule ni import qilishn
         synchronize: true,
       }),
     }),
-    AuthModule,
+    // AuthModule,
     UserModule,
   ],
 })
