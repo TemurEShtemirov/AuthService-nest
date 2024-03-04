@@ -14,18 +14,30 @@
 //   }
 // }
 
-
-
 import { Controller, Post, Body } from '@nestjs/common';
-import { UserService } from './user.service';
+import {
+  ClientProxy,
+  ClientProxyFactory,
+  Transport,
+} from '@nestjs/microservices';
 import { UserRegisterDto } from './user-register.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  private userServiceClient: ClientProxy;
+
+  constructor() {
+    this.userServiceClient = ClientProxyFactory.create({
+      transport: Transport.TCP,
+      options: {
+        host: 'localhost',
+        port: 3002,
+      },
+    });
+  }
 
   @Post('register')
   async register(@Body() registerDto: UserRegisterDto) {
-    return this.userService.register(registerDto);
+    return this.userServiceClient.send('register', registerDto)  //.toPromise();
   }
 }
